@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Clone GitHub Repository') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/najeh2022/ansible-projetcs.git'
+            }
+        }
+
+        stage('Test Ansible Connectivity') {
+            steps {
+                sh '''
+                ansible -i hosts webservers -m ping
+                '''
+            }
+        }
+
+        stage('Install Apache using Ansible') {
+            steps {
+                sh '''
+                ansible-playbook -i hosts install_apache.yml
+                '''
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Apache installé avec succès sur tous les serveurs'
+        }
+        failure {
+            echo '❌ Erreur lors de l’exécution du playbook'
+        }
+    }
+}
+
+
+
+git config --global user.name "najeh"
+git config --global user.email "najehhattab66@gmail.com"
+
+
+ssh-keygen -t ed25519 -C ""
+ssh-keygen -t ed25519 -C "najehhattab66@gmail.com"
