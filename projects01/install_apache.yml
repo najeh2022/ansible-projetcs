@@ -1,0 +1,10 @@
+---
+- name: Installer Apache sur les serveurs web
+  hosts: webservers
+  become: yes
+  tasks:
+    - name: Installer Apache (Debian/Ubuntu)
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
