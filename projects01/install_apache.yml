@@ -5,6 +5,6 @@
   tasks:
     - name: Installer Apache (Debian/Ubuntu)
       yum:
-        name: apache2
+        name: httpd
         state: present
         update_cache: yes
