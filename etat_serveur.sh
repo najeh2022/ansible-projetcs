@@ -21,3 +21,23 @@ echo "USED MEMORY:"$USED_RAM
 
 echo "USED DISK:" $USED_DISK
 
+curl --ssl-reqd \
+  --url "smtps://smtp.gmail.com:465" \
+  --user "najehhattab66@gmail.com:nker dkfx pjad vzaa" \
+  --mail-from "najehhattab66@gmail.com" \
+  --mail-rcpt "najehhattab2020@gmail.com" \
+  --upload-file - <<EOF
+From: najehhattab66@gmail.com
+To: najehhattab2020@gmail.com
+Subject: Mon sujet
+
+les info de serveur pour la date $date
+Private IP ADDRESSE: $addresse_ip_prive
+Public IP ADDRESSE: $addresse_ip
+USED CPU: $USED_CPU
+USED MEMORY: $USED_RAM
+USED DISK: $USED_DISK
+
+
+EOF
+
